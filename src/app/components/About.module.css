@@ -1,0 +1,36 @@
+/* ═══════════════════════════════════════
+   About.module.css
+═══════════════════════════════════════ */
+.aboutSection { padding: 8rem 0; background: var(--sand-light); }
+.aboutLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+.imgs { position: relative; height: 540px; }
+.imgMain { position: absolute; top:0; left:0; width:80%; height:390px; object-fit: cover; }
+.imgSecondary { position: absolute; bottom:0; right:0; width:55%; height:250px; object-fit: cover; border: 6px solid var(--sand-light); }
+.aboutBadge {
+  position: absolute;
+  top: 350px; left: 0;
+  background: var(--gold);
+  padding: 1.2rem 1.6rem;
+  text-align: center;
+  z-index: 10;
+}
+.badgeNum { display:block; font-family:'Cormorant Garamond',serif; font-size:2.8rem; font-weight:300; color:var(--text-dark); line-height:1; }
+.badgeText { display:block; font-size:0.65rem; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:rgba(20,10,0,0.65); margin-top:0.3rem; }
+.aboutText { font-size:0.92rem; line-height:1.9; color:var(--text-mid); margin-bottom:1rem; font-weight:300; }
+.locationGrid { display:grid; grid-template-columns:1fr 1fr; gap:0.8rem; margin:2rem 0; }
+.locItem { display:flex; gap:0.8rem; align-items:flex-start; padding:1rem; background:var(--white); border:1px solid rgba(201,168,76,0.18); }
+.locIcon { font-size:1.2rem; margin-top:0.1rem; }
+.locLabel { font-size:0.63rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--gold); margin-bottom:0.2rem; font-weight:500; }
+.locVal { font-size:0.78rem; color:var(--text-mid); line-height:1.5; }
+
+@media (max-width: 900px) {
+  .aboutLayout { grid-template-columns:1fr; }
+  .imgs { height:300px; }
+  .aboutBadge { display:none; }
+  .locationGrid { grid-template-columns:1fr; }
+}

@@ -1,0 +1,50 @@
+.section { display: grid; grid-template-columns: 1fr 1fr; min-height: 720px; }
+.imgSide { position: relative; overflow: hidden; }
+.imgSide img { width:100%; height:100%; object-fit:cover; }
+.imgOverlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(6,45,61,0.82) 0%, rgba(6,45,61,0.45) 100%);
+}
+.imgText {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 82%;
+}
+.imgTitle { color:var(--white); font-family:'Cormorant Garamond',serif; font-size:clamp(2rem,4vw,3.2rem); font-weight:300; line-height:1.15; margin-top:0.8rem; }
+.highlights { display:flex; flex-direction:column; gap:0.6rem; margin-top:1.5rem; text-align:left; }
+.highlight { color:rgba(255,255,255,0.75); font-size:0.82rem; display:flex; align-items:center; gap:0.5rem; }
+.checkmark { color:var(--gold); }
+.formWrap { background:var(--sand-light); display:flex; align-items:center; justify-content:center; padding:5rem 3rem; }
+.formInner { width:100%; max-width:460px; }
+.formTitle { font-size:1.9rem; font-weight:400; color:var(--ocean-deep); margin-bottom:0.4rem; }
+.formSub { font-size:0.82rem; color:var(--text-light); margin-bottom:2rem; }
+.form { display:flex; flex-direction:column; gap:1.2rem; }
+.row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.group { display:flex; flex-direction:column; gap:0.4rem; }
+.group label { font-size:0.68rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--text-mid); font-weight:500; }
+.group input, .group select {
+  border: 1px solid rgba(10,79,107,0.2);
+  background: var(--white);
+  padding: 0.85rem 1rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.88rem;
+  color: var(--text-dark);
+  outline: none;
+  transition: border-color 0.2s;
+  -webkit-appearance: none;
+}
+.group input:focus, .group select:focus { border-color: var(--gold); }
+.formNote { font-size:0.7rem; text-align:center; color:var(--text-light); margin-top:0.5rem; }
+.successBox { text-align:center; padding:3rem 2rem; background:var(--white); border:1px solid rgba(201,168,76,0.25); display:flex; flex-direction:column; align-items:center; gap:1rem; }
+.successIcon { width:58px; height:58px; background:var(--gold); color:var(--text-dark); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.4rem; font-weight:600; }
+.successTitle { font-size:1.5rem; font-weight:400; color:var(--ocean-deep); }
+.successText { font-size:0.85rem; color:var(--text-mid); line-height:1.7; }
+
+@media (max-width:900px) {
+  .section { grid-template-columns:1fr; }
+  .imgSide { height:300px; }
+  .formWrap { padding:3rem 1.5rem; }
+  .row { grid-template-columns:1fr; }
+}

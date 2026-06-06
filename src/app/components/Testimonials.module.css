@@ -1,0 +1,187 @@
+.section {
+  position: relative;
+  padding: 8rem 0;
+  overflow: hidden;
+  background: var(--ocean-deep);
+}
+/* Warm radial glow from bottom-right, subtle gold tint top-left */
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 75% 90% at 90% 70%,
+      rgba(201, 168, 76, 0.12) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      ellipse 55% 60% at 5% 30%,
+      rgba(26, 127, 160, 0.12) 0%,
+      transparent 50%
+    ),
+    linear-gradient(160deg, var(--ocean-deep) 0%, #0a3d52 55%, #0d4a5e 100%);
+  pointer-events: none;
+}
+/* Fine dot texture for depth */
+.section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.04) 1px,
+    transparent 1px
+  );
+  background-size: 28px 28px;
+  pointer-events: none;
+}
+.bgLeft {
+  display: none;
+}
+.bgRight {
+  display: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 6rem;
+  align-items: center;
+}
+.left {
+  padding: 2rem 0;
+}
+.ratingSummary {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  margin: 2rem 0 1.5rem;
+}
+.bigRating {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 4.5rem;
+  font-weight: 300;
+  color: var(--white);
+  line-height: 1;
+}
+.stars {
+  color: var(--gold);
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+}
+.starsMeta {
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 0.76rem;
+  margin-top: 0.2rem;
+}
+.badges {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+.badge {
+  font-size: 0.63rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  color: rgba(201, 168, 76, 0.75);
+  padding: 0.3rem 0.9rem;
+}
+
+/* Card — dark glass style to sit on the ocean background */
+.card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 2px solid var(--gold);
+  padding: 3rem;
+  animation: fadeIn 0.5s ease;
+}
+.quote {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 7rem;
+  font-weight: 300;
+  color: var(--gold);
+  opacity: 0.3;
+  line-height: 0.5;
+  margin-bottom: 1.5rem;
+}
+.text {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: rgba(255, 255, 255, 0.82);
+  font-style: italic;
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+.footer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.5rem;
+}
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--gold);
+}
+.name {
+  font-weight: 500;
+  font-size: 0.88rem;
+  color: var(--white);
+}
+.meta {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 0.2rem;
+}
+.tStars {
+  margin-left: auto;
+  color: var(--gold);
+  font-size: 0.9rem;
+}
+.dots {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+.dot {
+  width: 30px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.dotActive {
+  background: var(--gold);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 900px) {
+  .inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .card {
+    padding: 2rem;
+  }
+}
