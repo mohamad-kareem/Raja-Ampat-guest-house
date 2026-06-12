@@ -1,48 +1,65 @@
-'use client'
-import { useEffect, useRef } from 'react'
-import styles from './Rooms.module.css'
+"use client";
+import { useEffect, useRef } from "react";
+import styles from "./Rooms.module.css";
 
 const rooms = [
   {
-    name: 'Ocean Breeze Room',
-    type: 'Standard',
-    price: 85,
-    img: 'https://images.unsplash.com/photo-1540518614846-7eded433c457?w=800&q=80',
-    features: ['Sea View', 'King Bed', 'Private Bathroom', 'Cable TV'],
-    desc: 'Wake to the sound of waves. Natural rattan furnishings, breezy island charm, and a private bathroom stocked with complimentary toiletries.',
-    size: '28 m²', guests: 2,
+    name: "Option One",
+    type: "Standard",
+    price: 39,
+    img: "/img2.jpeg",
+    features: [
+      "3 m × 3 m",
+      "Private Toilet",
+      "Private Shower",
+      "Cozy & Compact",
+    ],
+    desc: "A snug and well-appointed room measuring 3 × 3 m, featuring its own private toilet and shower — everything you need for a comfortable stay.",
+    size: "9 m²",
+    guests: 2,
   },
   {
-    name: 'Coral Suite',
-    type: 'Deluxe',
-    price: 145,
-    img: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&q=80',
-    features: ['Panoramic View', 'King Bed', 'Kitchenette', 'Private Terrace'],
-    desc: 'Floor-to-ceiling views of the coral-laced seascape, a private terrace for sunset cocktails, and a fully appointed kitchenette.',
-    size: '48 m²', guests: 3, badge: 'Most Popular',
+    name: "Room Two",
+    type: "Standard",
+    price: 39,
+    img: "/img1.jpeg",
+    features: ["4 m × 3 m", "Private Toilet", "Private Shower", "Extra Space"],
+    desc: "With a little more room to breathe at 4 × 3 m, this space offers a relaxed layout alongside its own private toilet and shower.",
+    size: "12 m²",
+    guests: 2,
+    badge: "Best Value",
   },
   {
-    name: 'Garden Villa',
-    type: 'Premium',
-    price: 195,
-    img: 'https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?w=800&q=80',
-    features: ['Private Garden', 'Two Bedrooms', 'Full Kitchen', 'Dining Area'],
-    desc: 'Nestled among tropical palms, the Garden Villa delivers ultimate privacy with lush surroundings — ideal for families or honeymooners.',
-    size: '72 m²', guests: 4,
+    name: "Room Three",
+    type: "Standard",
+    price: 39,
+    img: "/img3.jpeg",
+    features: [
+      "3 m × 5 m",
+      "Private Toilet",
+      "Private Shower",
+      "Spacious Layout",
+    ],
+    desc: "The largest of our standard rooms at 3 × 5 m, giving you generous space to stretch out, all with a private en-suite toilet and shower.",
+    size: "15 m²",
+    guests: 3,
   },
-]
+];
 
 export default function Rooms() {
-  const cardRefs = useRef([])
+  const cardRefs = useRef([]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add(styles.cardVisible) }),
-      { threshold: 0.12 }
-    )
-    cardRefs.current.forEach(r => r && observer.observe(r))
-    return () => observer.disconnect()
-  }, [])
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add(styles.cardVisible);
+        }),
+      { threshold: 0.12 },
+    );
+    cardRefs.current.forEach((r) => r && observer.observe(r));
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="rooms" className={styles.section}>
@@ -52,7 +69,8 @@ export default function Rooms() {
           <h2 className="sectionTitle">Your Island Sanctuary</h2>
           <div className="dividerCenter" />
           <p className={styles.headerDesc}>
-            Each room embraces Raja Ampat's natural beauty — local craftsmanship, modern comfort, and uninterrupted ocean views.
+            Each room embraces Raja Ampat's natural beauty — local
+            craftsmanship, modern comfort, and uninterrupted ocean views.
           </p>
         </div>
 
@@ -61,7 +79,7 @@ export default function Rooms() {
             <div
               key={room.name}
               className={styles.card}
-              ref={el => cardRefs.current[i] = el}
+              ref={(el) => (cardRefs.current[i] = el)}
               style={{ transitionDelay: `${i * 0.15}s` }}
             >
               {room.badge && <div className={styles.badge}>{room.badge}</div>}
@@ -78,7 +96,11 @@ export default function Rooms() {
                 <h3 className={styles.name}>{room.name}</h3>
                 <p className={styles.desc}>{room.desc}</p>
                 <div className={styles.features}>
-                  {room.features.map(f => <span key={f} className={styles.tag}>{f}</span>)}
+                  {room.features.map((f) => (
+                    <span key={f} className={styles.tag}>
+                      {f}
+                    </span>
+                  ))}
                 </div>
                 <div className={styles.footer}>
                   <div className={styles.price}>
@@ -86,7 +108,9 @@ export default function Rooms() {
                     <span className={styles.priceNum}>${room.price}</span>
                     <span className={styles.pricePer}>/night</span>
                   </div>
-                  <a href="#booking" className="btnPrimary">Book →</a>
+                  <a href="#booking" className="btnPrimary">
+                    Book →
+                  </a>
                 </div>
               </div>
             </div>
@@ -94,5 +118,5 @@ export default function Rooms() {
         </div>
       </div>
     </section>
-  )
+  );
 }
